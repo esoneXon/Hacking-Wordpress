@@ -4,9 +4,9 @@
 # Basic Wordpress and Wordpress Structure
 ### 🔥Wordpress Structure 🔥
 
-WordPress can be installed on a Windows, Linux, or Mac OSX host. For this module, we will focus on a default WordPress installation on an Ubuntu Linux web server. WordPress requires a fully installed and configured LAMP stack (Linux operating system, Apache HTTP Server, MySQL database, and the PHP programming language) before installation on a Linux host. After installation, all WordPress supporting files and directories will be accessible in the webroot located at /var/www/html.
+WordPress dapat diinstal pada host Windows, Linux, atau Mac OSX.  Untuk modul ini, kami akan fokus pada instalasi WordPress default di server web Ubuntu Linux.  WordPress memerlukan tumpukan LAMP yang terinstal dan terkonfigurasi sepenuhnya (sistem operasi Linux, Server HTTP Apache, database MySQL, dan bahasa pemrograman PHP) sebelum penginstalan pada host Linux.  Setelah instalasi, semua file dan direktori pendukung WordPress akan dapat diakses di webroot yang terletak di /var/www/html.
 
-Below is the directory structure of a default WordPress install, showing the key files and subdirectories necessary for the website to function properly.
+Di bawah ini adalah struktur direktori instalasi WordPress default, menunjukkan file kunci dan subdirektori yang diperlukan agar situs web berfungsi dengan baik.
 
 
      tree -L 1 /var/www/html
@@ -34,7 +34,7 @@ Below is the directory structure of a default WordPress install, showing the key
 
 ## 👽 Key WordPress Files ♀️
 
-The root directory of WordPress contains files that are needed to configure WordPress to function correctly.
+Direktori root WordPress berisi file yang diperlukan untuk mengonfigurasi WordPress agar berfungsi dengan benar.
 
     index.php is the homepage of WordPress.
 
@@ -48,12 +48,12 @@ The root directory of WordPress contains files that are needed to configure Word
     /login.php
     /wp-login.php
 
-This file can also be renamed to make it more challenging to find the login page.
+File ini juga dapat diganti namanya agar lebih sulit menemukan halaman login.
 
     xmlrpc.php is a file representing a feature of WordPress that enables data to be transmitted with HTTP acting as the transport mechanism and XML as the encoding mechanism. This type of communication has been replaced by the WordPress REST API.
 WordPress Configuration File
 ## WordPress Configuration File
-    The wp-config.php file contains information required by WordPress to connect to the database, such as the database name, database host, username and password, authentication keys and salts, and the database table prefix. This configuration file can also be used to activate DEBUG mode, which can useful in troubleshooting.
+    File wp-config.php berisi informasi yang diperlukan oleh WordPress untuk terhubung ke database, seperti nama database, host database, nama pengguna dan kata sandi, kunci dan salt autentikasi, dan awalan tabel database.  File konfigurasi ini juga dapat digunakan untuk mengaktifkan mode DEBUG, yang berguna dalam pemecahan masalah.
 wp-config.php
 
 
@@ -100,7 +100,7 @@ wp-config.php
     require_once ABSPATH . 'wp-settings.php';
 
 # Key WordPress Directories
-The wp-content folder is the main directory where plugins and themes are stored. The subdirectory uploads/ is usually where any files uploaded to the platform are stored. These directories and files should be carefully enumerated as they may lead to contain sensitive data that could lead to remote code execution or exploitation of other vulnerabilities or misconfigurations.
+Folder wp-content adalah direktori utama tempat plugin dan tema disimpan.  Subdirektori uploads/ biasanya tempat file yang diunggah ke platform disimpan.  Direktori dan file ini harus dihitung dengan hati-hati karena dapat berisi data sensitif yang dapat menyebabkan eksekusi kode jarak jauh atau eksploitasi kerentanan atau kesalahan konfigurasi lainnya.
     
 #### WP-Content
 
@@ -112,7 +112,7 @@ The wp-content folder is the main directory where plugins and themes are stored.
  
 #### WP-Includes
 
-wp-includes contains everything except for the administrative components and the themes that belong to the website. This is the directory where core files are stored, such as certificates, fonts, JavaScript files, and widgets.
+wp-includes berisi segalanya kecuali komponen administratif dan tema milik situs web.  Ini adalah direktori tempat file inti disimpan, seperti sertifikat, font, file JavaScript, dan widget.
 
    
      tree -L 1 /var/www/html/wp-includes
@@ -131,17 +131,17 @@ wp-includes contains everything except for the administrative components and the
  
 # WordPress User Roles 
 
-There are five types of users in a standard WordPress installation.
+Ada lima jenis pengguna dalam instalasi WordPress standar.
 
      Role 	          Description
-     Administrator 	This user has access to administrative features within the website. This includes adding and deleting users and posts, as well as                         editing source code.
-     Editor 	     An editor can publish and manage posts, including the posts of other users.
-     Author 	     Authors can publish and manage their own posts.
-     Contributor 	These users can write and manage their own posts but cannot publish them.
-     Subscriber 	These are normal users who can browse posts and edit their profiles.
+     Administrator 	Pengguna ini memiliki akses ke fitur administratif di dalam situs web.  Ini termasuk menambah dan menghapus pengguna dan posting, serta mengedit kode sumber.
+     Editor 	     Editor dapat menerbitkan dan mengelola postingan, termasuk postingan pengguna lain.
+     Author 	     Penulis dapat menerbitkan dan mengelola posting mereka sendiri.
+     Contributor 	Pengguna ini dapat menulis dan mengelola postingan mereka sendiri tetapi tidak dapat menerbitkannya.
+     Subscriber 	Ini adalah pengguna normal yang dapat menelusuri posting dan mengedit profil mereka.
 
 
-Gaining access as an administrator is usually needed to obtain code execution on the server. However, editors and authors might have access to certain vulnerable plugins that normal users do not.
+Mendapatkan akses sebagai administrator biasanya diperlukan untuk mendapatkan eksekusi kode di server.  Namun, editor dan penulis mungkin memiliki akses ke plugin rentan tertentu yang tidak dimiliki oleh pengguna biasa.
  
  
 # 🥇Enumeration Procedure For Wordpress Website in Manually
@@ -167,7 +167,7 @@ Command For Themmes:
       
     
 #### ⏩ User Enumeration
-Enumerating a list of valid users is a critical phase of a WordPress security assessment. Armed with this list, we may be able to guess default credentials or perform a brute force password attack. If successful, we may be able to log in to the WordPress backend as an author or even as an administrator. This access can potentially be leveraged to modify the WordPress website or even interact with the underlying web server.
+Menghitung daftar pengguna yang valid adalah fase penting dari penilaian keamanan WordPress.  Berbekal daftar ini, kami mungkin dapat menebak kredensial default atau melakukan serangan kata sandi yang kejam.  Jika berhasil, kita mungkin bisa masuk ke backend WordPress sebagai penulis atau bahkan sebagai administrator.  Akses ini berpotensi dimanfaatkan untuk memodifikasi situs web WordPress atau bahkan berinteraksi dengan server web yang mendasarinya.
 
 Command :
         
@@ -176,11 +176,11 @@ Command :
          
  
 # ⤵️Enumeration Procedure For Wordpress Website in Automatically Using wpscan
-WPScan is an automated WordPress scanner and enumeration tool. It determines if the various themes and plugins used by a WordPress site are outdated or vulnerable. It is installed by default on Parrot OS ,Kali OS but can also be installed manually with gem
+WPScan adalah pemindai WordPress otomatis dan alat enumerasi.  Ini menentukan apakah berbagai tema dan plugin yang digunakan oleh situs WordPress sudah usang atau rentan.  Itu diinstal secara default di Parrot OS, Kali OS tetapi juga dapat diinstal secara manual dengan permata
          gem install wpscan
-Once the installation completes, we can issue a command such as ***wpscan*** --hh to verify the installation. This command will show us the usage menu with all of the available command-line switches available.
+Setelah penginstalan selesai, kami dapat mengeluarkan perintah seperti ***wpscan*** --hh untuk memverifikasi penginstalan.  Perintah ini akan menunjukkan kepada kita menu penggunaan dengan semua sakelar baris perintah yang tersedia.
 ### 🔥Enumerating a Website with WPScan ⚛️
-The --enumerate flag is used to enumerate various components of the WordPress application such as plugins, themes, and users. By default, ***WPScan enumerates vulnerable plugins, themes, users, media, and backups***. However, specific arguments can be supplied to restrict enumeration to specific components. For example, all plugins can be enumerated using the arguments --enumerate ap. Let's run a normal enumeration scan against a WordPress website.
+Bendera --enumerate digunakan untuk menghitung berbagai komponen aplikasi WordPress seperti plugin, tema, dan pengguna.  Secara default, ***WPScan menghitung plugin, tema, pengguna, media, dan cadangan yang rentan***.  Namun, argumen khusus dapat diberikan untuk membatasi pencacahan ke komponen tertentu.  Misalnya, semua plugin dapat dihitung menggunakan argumen --enumerate ap.  Mari jalankan pemindaian pencacahan normal terhadap situs web WordPress.
 Command :
 
             wpscan --url http://blog.inlanefreight.com --enumerate --api-token api-token-value
